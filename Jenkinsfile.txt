@@ -14,9 +14,16 @@ pipeline{
 				}
 			}
 		}
-		stage("Unit and Intergration Tests"){
+		stage("Unit and Integration Tests"){
 			steps{
 				echo "Running Unit... using JUnit"
-				echo "Runiing Integration Tests... using Cucumber"
+				echo "Running Integration Tests... using Cucumber"
+			}
+		}
+		stage("Code Analysis"){
+			steps{
+				echo "Performing Code Analysis... using CheckStyle"
+			}
+		}
 	}
 }
