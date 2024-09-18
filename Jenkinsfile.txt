@@ -3,7 +3,8 @@ pipeline{
 	stages{
 		stage("Build"){
 			steps{
-				echo "Building ..."
+				echo "Building ... using Maven"
+				echo "Begin the test"
 			}
 			post{
 				success{
@@ -13,5 +14,9 @@ pipeline{
 				}
 			}
 		}
+		stage("Unit and Intergration Tests"){
+			steps{
+				echo "Running Unit... using JUnit"
+				echo "Runiing Integration Tests... using Cucumber"
 	}
 }
