@@ -30,5 +30,10 @@ pipeline{
 				echo "Performing Code Analysis... using Netsparker"
 			}
 		}
+		stage("Integration Tests on Staging"){
+			steps{
+				echo "Performing Integration Tests on Staging... using TestNG"
+			}
+		}
 	}
 }
