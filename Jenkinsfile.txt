@@ -8,9 +8,10 @@ pipeline{
 			}
 			post{
 				success{
-					mail to: "wendy.lam0602@gmail.com",
-					subject: "Build Status Email",
-					body: "Build was successful!"
+					echo "Build successful!"
+				}
+				failure{
+					echo "Build failed!"
 				}
 			}
 		}
@@ -18,6 +19,18 @@ pipeline{
 			steps{
 				echo "Running Unit... using JUnit"
 				echo "Running Integration Tests... using Cucumber"
+			}
+			post{
+				success{
+					mail to: "wendy.lam0602@gmail.com",
+					subject: "Unit and Integration Tests Status Email",
+					body: "Unit and Integration Tests was successful!"
+				}
+				failure{
+					mail to: "wendy.lam0602@gmail.com",
+					subject: "Unit and Integration Tests Status Email",
+					body: "Unit and Integration Tests was fail! Please check the logs for more details"
+				}
 			}
 		}
 		stage("Code Analysis"){
@@ -28,6 +41,18 @@ pipeline{
 		stage("Security Scan"){
 			steps{
 				echo "Performing Code Analysis... using Netsparker"
+			}
+			post{
+				success{
+					mail to: "wendy.lam0602@gmail.com",
+					subject: "Security Scan Status Email",
+					body: "Security Scan was successful!"
+				}
+				failure{
+					mail to: "wendy.lam0602@gmail.com",
+					subject: "Security Scan Status Email",
+					body: "Security Scan was fail! Please check the logs for more details"
+				}
 			}
 		}
 		stage("Deploy to Staging"){
