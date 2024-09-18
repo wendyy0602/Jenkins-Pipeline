@@ -25,5 +25,10 @@ pipeline{
 				echo "Performing Code Analysis... using CheckStyle"
 			}
 		}
+		stage("Security Scan"){
+			steps{
+				echo "Performing Code Analysis... using Netsparker"
+			}
+		}
 	}
 }
